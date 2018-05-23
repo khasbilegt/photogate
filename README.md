@@ -1,6 +1,6 @@
 # #FORM Scientific - Photogate
 
-Control application of #FORM - Photogate based on electron
+Control application of #FORM - Photogate based on electron.
 You can learn more about this application within the [#FORM Scientific - Photogate](https://form.fablab.mn/photogate).
 
 ## To Use
