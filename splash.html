@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h3>#FORM - Photogate</h3>
+    <p id="version"></p>
+</body>
+<script>
+    const { ipcRenderer } = require('electron')
+    
+    ipcRenderer.on('set-version', (event, arg) => {
+        const version = document.getElementById('version')
+        version.innerHTML = arg
+    })
+
+    ipcRenderer.send('get-version')
+</script>
+</html>
