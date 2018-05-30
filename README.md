@@ -11,7 +11,7 @@ To clone and run this application you'll need [Git](https://git-scm.com) and [No
 # Clone this repository
 git clone https://github.com/khasbilegt/photogate
 # Go into the repository
-cd electron-quick-start
+cd photogate
 # Install dependencies
 npm install
 # Run the app
