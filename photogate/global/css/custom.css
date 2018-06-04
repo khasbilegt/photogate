@@ -1,0 +1,18 @@
+body {
+    padding-top: 0px;
+}
+
+#control-section {
+    background: rgb(63,94,251);
+    background: linear-gradient(45deg, rgba(63,94,251,1) 21%, rgba(252,70,107,1) 100%);
+}
+
+#title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#title span:first-child {
+    color: #ff5e97;
+    border-color: #ff5e97;
+}
