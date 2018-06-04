@@ -9,6 +9,8 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+const debug = /--debug/.test(process.argv[2])
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -21,8 +23,8 @@ function createWindow () {
     backgroundColor: '#fff',
     width: 800, 
     height: 600,
-    minHeight: 350,
-    minWidth: 600
+    minHeight: 620,
+    minWidth: 770
   })
 
   // and load the index.html of the app.
@@ -32,8 +34,12 @@ function createWindow () {
     slashes: true
   }))
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  // Launch fullscreen with DevTools open, usage: npm run debug
+  if (debug) {
+    mainWindow.webContents.openDevTools()
+    mainWindow.maximize()
+    require('devtron').install()
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -100,12 +106,12 @@ ipcMain.on('get-version', event => {
   event.sender.send('set-version', app.getVersion())
 })
 
-  ipcMain.on('app-init', event => {
-    if (splashWindow) {
-      setTimeout(() => {
-        splashWindow.close()
-      }, 2000)
-    }
+ipcMain.on('app-init', event => {
+  if (splashWindow) {
+    setTimeout(() => {
+      splashWindow.close()
+    }, 2000)
+  }
 
-    mainWindow.show()
-  })
+  mainWindow.show()
+})
