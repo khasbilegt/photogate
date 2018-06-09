@@ -27,9 +27,20 @@
   <!-- <link rel="stylesheet" href="photogate/global/vendor/slidepanel/slidePanel.css"> -->
   <!-- <link rel="stylesheet" href="photogate/global/vendor/flag-icon-css/flag-icon.css"> -->
   <link rel="stylesheet" href="photogate/base/assets/examples/css/charts/flot.css">
+  <!-- <link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css"/> -->
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-fixedcolumns-bs4/dataTables.fixedcolumns.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-rowgroup-bs4/dataTables.rowgroup.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-scroller-bs4/dataTables.scroller.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
+  <link rel="stylesheet" href="photogate/base/assets/examples/css/tables/datatable.css">
 
   <!-- Fonts -->
   <link rel="stylesheet" href="photogate/global/fonts/font-awesome/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="photogate/global/fonts/web-icons/web-icons.min.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
   <!-- Scripts -->
@@ -78,9 +89,9 @@
             </div>
           </div>
           <div class="panel-body">
-            <div id="table">
+            <div id="tableContainer">
               <h4 class="font-size-12">Хурд - Хугацааны хүснэгт</h4>
-              <table class="table table-hover">
+              <table id="table" class="table table-hover">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -90,39 +101,9 @@
                     <th>Хурд (м/с)</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>0.5</td>
-                    <td>2.5</td>
-                    <td>2</td>
-                    <td>0.96</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>0.5</td>
-                    <td>2.5</td>
-                    <td>2</td>
-                    <td>0.96</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>0.5</td>
-                    <td>2.5</td>
-                    <td>2</td>
-                    <td>0.96</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>0.5</td>
-                    <td>2.5</td>
-                    <td>2</td>
-                    <td>0.96</td>
-                  </tr>
-                </tbody>
               </table>
             </div>
-            <div id="graph">
+            <div id="graphContainer">
               <h4 class="font-size-12">Хурд - Хугацааны график</h4>
               <div class="w-xs-400" id="exampleFlotFullBg" style="padding: 0px; position: relative;">
                 <canvas class="flot-base" width="100%" height="50%" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 449.5px; height: 300px;"></canvas>
@@ -296,6 +277,23 @@
   <!-- Plugins -->
   <!-- <script src="photogate/global/vendor/switchery/switchery.js"></script> -->
   <script src="photogate/global/vendor/intro-js/intro.js"></script>
+  <script type="text/javascript" src="assets/js/datatables.min.js"></script>
+  <!-- <script src="photogate/global/vendor/datatables.net/jquery.dataTables.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-bs4/dataTables.bootstrap4.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-fixedheader/dataTables.fixedHeader.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-fixedcolumns/dataTables.fixedColumns.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-rowgroup/dataTables.rowGroup.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-scroller/dataTables.scroller.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-responsive/dataTables.responsive.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-buttons/dataTables.buttons.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-buttons/buttons.html5.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-buttons/buttons.flash.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-buttons/buttons.print.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-buttons/buttons.colVis.js"></script> -->
+        <!-- <script src="photogate/global/vendor/datatables.net-buttons-bs4/buttons.bootstrap4.js"></script> -->
+        <!-- <script src="photogate/global/vendor/asrange/jquery-asRange.min.js"></script> -->
+        <!-- <script src="photogate/global/vendor/bootbox/bootbox.js"></script> -->
   <!-- <script src="photogate/global/vendor/screenfull/screenfull.js"></script> -->
   <!-- <script src="photogate/global/vendor/slidepanel/jquery-slidePanel.js"></script> -->
   <!-- <script src="photogate/global/vendor/asprogress/jquery-asProgress.js"></script> -->
@@ -341,6 +339,8 @@
 
   <script src="photogate/base/assets/examples/js/charts/flot.js"></script>
   <!-- <script src="photogate/base/assets/examples/js/uikit/panel-structure.js"></script> -->
+  <!-- <script src="photogate/global/js/Plugin/datatables.js"></script> -->
+    
 
   <script>
     if (window.module) module = window.module;

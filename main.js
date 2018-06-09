@@ -20,11 +20,10 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     show: false,
-    backgroundColor: '#fff',
     width: 800, 
     height: 600,
     minHeight: 620,
-    minWidth: 770
+    minWidth: 770,
   })
 
   // and load the index.html of the app.
@@ -52,13 +51,13 @@ function createWindow () {
 
 function createSplashWindow () {
   splashWindow = new BrowserWindow({
-    width: 320,
-    height: 240,
-    frame: false,
-    resizable: false,
-    backgroundColor: '#ccc',
-    alwaysOnTop: true,
     show: false,
+    width: 241,
+    height: 241,
+    frame: false,
+    movable: false,
+    alwaysOnTop: false,
+    transparent: true,
   })
 
   splashWindow.loadURL(url.format({

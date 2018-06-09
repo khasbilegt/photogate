@@ -2,19 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        html, 
+        body {
+            background-color: rgba(0, 0, 0, 0);
+            -webkit-user-select: none;
+            -webkit-app-region: drag;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-    <h3>#FORM - Photogate</h3>
-    <p id="version"></p>
+    <div>
+        <img src="photogate/global/photos/loader.gif" width="240px" height="240px" >
+    </div>
 </body>
 <script>
-    const { ipcRenderer } = require('electron')
+    // const { ipcRenderer } = require('electron')
     
-    ipcRenderer.on('set-version', (event, arg) => {
-        const version = document.getElementById('version')
-        version.innerHTML = arg
-    })
+    // ipcRenderer.on('set-version', (event, arg) => {
+    //     const version = document.getElementById('version')
+    //     version.innerHTML = arg
+    // })
 
-    ipcRenderer.send('get-version')
+    // ipcRenderer.send('get-version')
 </script>
 </html>
