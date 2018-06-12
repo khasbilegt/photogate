@@ -6,40 +6,42 @@ const serialport = require('serialport')
 const SerialPort = serialport.SerialPort
 const teensy_id = "4304420"
 
+window.$ = window.jQuery = require('./photogate/global/vendor/jquery/jquery.min.js');
+
 let photogate 
-let table
+let arrayData
 
 setTimeout(() => {
     ipcRenderer.send('app-init')
 }, 5000)
 
-document.getElementById('run-gate').addEventListener('click', () => {
-    let objectLength = document.getElementById('objectLength-gate').value;
+$('#run-gate').click(() => {
+    let objectLength = $('#objectLength-gate').val();
+    let display = ($("#graph-gate").prop("checked", true)) ? true : false
 
+    let table = $('#table').DataTable()
+    
     serialport.list((err, ports) => {
         errorHandler(err)
-
+        
         ports.forEach(port => {
             if (port.manufacturer === "Teensyduino") {
                 photogate = new serialport(port.comName, {
                     baudRate: 115200,
                     parser: new serialport.parsers.Readline('\r\n'),
                 })
-
+                
+                
                 if (!photogate.isOpen) {
                     photogate.write('g1')
                 
                     photogate.on('readable', () => {
-                        let data = photogate.read().toString('utf8')
-                        table = document.getElementById('table')
-
-                        arrayData = data.split(/[\s+]+/);
-
-                        table.DataTable({
-                            data: arrayData,
-                        })
-
+                        let data = photogate.read().toString('utf8').slice()
+                        console.log(data)
+                        arrayData = data.split(" ");
+                        table.row.add(arrayData).draw()
                         console.log(arrayData)
+
                     })
                 }
 
@@ -52,7 +54,7 @@ document.getElementById('run-gate').addEventListener('click', () => {
 
 
 function errorHandler(err) {
-    document.getElementById('error').innerHTML = err
+    $('#error').text(err)
 }
 
 function sendCommand(cmd) {
